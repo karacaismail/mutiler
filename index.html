@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mutiler · 20 Aylık Yol Haritası · 2026-2027</title>
+<meta name="description" content="Mutiler B2B etiket-ambalaj 500.000 TL bütçeli niş liderlik stratejisi. 12 Mayıs 2026 - 31 Aralık 2027.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.min.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.1/echarts.min.js"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Roboto', 'system-ui', 'sans-serif'],
+        mono: ['"Roboto Mono"', 'monospace']
+      },
+      fontSize: {
+        'xs': ['0.875rem', { lineHeight: '1.5' }],
+        'sm': ['1rem', { lineHeight: '1.5' }],
+        'base': ['1rem', { lineHeight: '1.625' }],
+        'lg': ['1.125rem', { lineHeight: '1.6' }],
+        'xl': ['1.375rem', { lineHeight: '1.4' }],
+        '2xl': ['1.75rem', { lineHeight: '1.3' }],
+        '3xl': ['2.25rem', { lineHeight: '1.2' }],
+        '4xl': ['3rem', { lineHeight: '1.1' }]
+      },
+      colors: {
+        ink: {
+          50: '#fafaf9',
+          100: '#f5f5f4',
+          200: '#e7e5e4',
+          300: '#d6d3d1',
+          400: '#a8a29e',
+          500: '#78716c',
+          600: '#57534e',
+          700: '#44403c',
+          800: '#292524',
+          900: '#1c1917',
+          950: '#0c0a09'
+        },
+        accent: {
+          50: '#fff7ed',
+          100: '#ffedd5',
+          200: '#fed7aa',
+          400: '#fb923c',
+          500: '#f97316',
+          600: '#ea580c',
+          700: '#c2410c',
+          800: '#9a3412',
+          900: '#7c2d12'
+        }
+      }
+    }
+  }
+};
+</script>
+
+<style>
+  :root {
+    --ink-bg: #fafaf9;
+    --ink-line: #e7e5e4;
+    --ink-text: #1c1917;
+    --ink-muted: #57534e;
+    --accent: #c2410c;
+  }
+  html { font-family: 'Roboto', system-ui, sans-serif; font-weight: 300; }
+  body { background: var(--ink-bg); color: var(--ink-text); font-weight: 300; }
+  .font-display { font-family: 'Roboto', sans-serif; font-weight: 500; letter-spacing: -0.02em; }
+  .font-mono { font-family: 'Roboto Mono', monospace; }
+  .num { font-family: 'Roboto Mono', monospace; font-weight: 400; font-variant-numeric: tabular-nums; }
+  .hairline { border-color: var(--ink-line); }
+  .accent-text { color: var(--accent); }
+  .accent-bg { background: var(--accent); color: #fff; }
+  
+  /* Vertical timeline rail */
+  .timeline-rail { position: relative; }
+  .timeline-rail::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 24px;
+    bottom: 24px;
+    width: 1px;
+    background: var(--ink-line);
+  }
+  
+  /* Sticky nav active state */
+  .nav-link.active { color: var(--accent); }
+  .nav-link.active::before { content: '— '; }
+  
+  /* Print styles */
+  @media print {
+    .no-print { display: none !important; }
+    body { background: white; }
+    .page-break { page-break-before: always; }
+    section { page-break-inside: avoid; }
+  }
+  
+  /* Phosphor icon sizing baseline */
+  .ph, [class^="ph-"], [class*=" ph-"] { font-size: inherit; }
+  
+  /* Chart containers */
+  .chart-box { background: white; border: 1px solid var(--ink-line); border-radius: 4px; }
+  
+  /* Month card stripe */
+  .month-card { border-left: 3px solid var(--accent); transition: background 0.15s; }
+  .month-card:hover { background: white; }
+  
+  /* Sprint card states */
+  .sprint-card { background: white; border: 1px solid var(--ink-line); }
+  .sprint-num { background: var(--ink-900); color: white; font-family: 'Roboto Mono', monospace; }
+  
+  /* Subtle anchor scroll offset for sticky header */
+  section[id] { scroll-margin-top: 80px; }
+</style>
+</head>
+
+<body class="text-ink-900 antialiased">
+
+<!-- ====== STICKY HEADER ====== -->
+<header class="sticky top-0 z-40 bg-ink-50/95 backdrop-blur-sm border-b hairline no-print">
+  <div class="max-w-screen-xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 accent-bg flex items-center justify-center rounded-sm">
+        <i class="ph ph-tag text-white text-lg"></i>
+      </div>
+      <div>
+        <p class="font-display text-base leading-none">Mutiler</p>
+        <p class="text-xs text-ink-500 leading-none mt-0.5">Yol haritası · 2026-2027</p>
+      </div>
+    </div>
+    <nav class="hidden md:flex items-center gap-6 text-sm">
+      <a href="#ozet" class="text-ink-600 hover:accent-text transition">Özet</a>
+      <a href="#milestone" class="text-ink-600 hover:accent-text transition">5 milestone</a>
+      <a href="#butce" class="text-ink-600 hover:accent-text transition">Bütçe</a>
+      <a href="#sprint" class="text-ink-600 hover:accent-text transition">Sprintler</a>
+      <a href="#aylik" class="text-ink-600 hover:accent-text transition">20 ay</a>
+      <a href="#hafta" class="text-ink-600 hover:accent-text transition">İlk 7 gün</a>
+      <a href="#gate" class="text-ink-600 hover:accent-text transition">Karar kapıları</a>
+    </nav>
+    <button onclick="window.print()" class="flex items-center gap-2 px-3 py-1.5 text-sm border hairline rounded-sm hover:bg-white transition">
+      <i class="ph ph-printer"></i>
+      <span class="hidden sm:inline">Yazdır</span>
+    </button>
+  </div>
+</header>
+
+<main class="max-w-screen-xl mx-auto px-6 py-12">
+
+<!-- ====== HERO ====== -->
+<section id="ozet" class="mb-20">
+  <div class="grid md:grid-cols-12 gap-8 items-end">
+    <div class="md:col-span-8">
+      <p class="text-sm text-ink-500 mb-4 font-mono">12 MAY 2026 → 31 ARA 2027 · 20 AY · ~85 HAFTA</p>
+      <h1 class="font-display text-4xl md:text-5xl leading-none mb-6">
+        Niş liderlik<br>
+        <span class="accent-text">üç sertifika, iki fuar,<br>otuz müşteri</span>
+      </h1>
+      <p class="text-lg text-ink-600 max-w-2xl">
+        Mutiler'in 500.000 TL bütçeyle Türkiye'nin ilk DPP-uyumlu KOBİ etiket trim tedarikçisi olma yol haritası. Üç sertifika (FSC → OEKO-TEX → GRS), iki büyük fuar (IFCO 2026, Texhibition 2027), on iki n8n otomasyonu ve 30-40 yeni B2B müşteri.
+      </p>
+    </div>
+    <div class="md:col-span-4">
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-white border hairline rounded-sm p-4">
+          <p class="text-xs text-ink-500 mb-1">Bütçe</p>
+          <p class="num text-2xl">500.000<span class="text-base text-ink-500 ml-1">₺</span></p>
+        </div>
+        <div class="bg-white border hairline rounded-sm p-4">
+          <p class="text-xs text-ink-500 mb-1">Sertifika</p>
+          <p class="num text-2xl">3</p>
+        </div>
+        <div class="bg-white border hairline rounded-sm p-4">
+          <p class="text-xs text-ink-500 mb-1">Müşteri</p>
+          <p class="num text-2xl">30-40</p>
+        </div>
+        <div class="accent-bg rounded-sm p-4">
+          <p class="text-xs text-orange-100 mb-1">Ciro 2027</p>
+          <p class="num text-2xl text-white">~120<span class="text-base text-orange-100 ml-1">M ₺</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- BLUF -->
+  <div class="mt-12 grid md:grid-cols-3 gap-6">
+    <div class="md:col-span-2">
+      <p class="text-xs uppercase tracking-widest text-ink-500 mb-3 font-mono">Stratejik tez</p>
+      <p class="text-base text-ink-700">
+        Mutiler, 500.000 TL bütçeyle 20 ay içinde <span class="font-medium accent-text">3 sertifikayı ardışık alacak, 2 fuarı sahneye koyacak ve 12 n8n otomasyonunu canlıya alarak</span> Türkiye'nin ilk DPP-uyumlu KOBİ etiket trim tedarikçisi niş liderliğini alacak. AB ESPR tekstil delegated act'inin geç 2026 – Q2 2027 yayını ve 18 aylık uyum penceresi, early-mover pozisyonunun kapısının ~14 ay sonra kapanacağı anlamına gelir. Eylem, <span class="font-medium">12 Mayıs Salı 09:00'da</span> başlamalıdır.
+      </p>
+    </div>
+    <div class="bg-ink-900 text-ink-100 p-6 rounded-sm">
+      <p class="text-xs uppercase tracking-widest text-ink-400 mb-3 font-mono">Pazar dinamiği</p>
+      <ul class="space-y-2 text-sm">
+        <li class="flex gap-2"><i class="ph ph-arrow-right accent-text mt-1"></i><span>SAM: ~25 milyar TL apparel etiket pazarı</span></li>
+        <li class="flex gap-2"><i class="ph ph-arrow-right accent-text mt-1"></i><span>Lider Avery Dennison %10-15, fragmented</span></li>
+        <li class="flex gap-2"><i class="ph ph-arrow-right accent-text mt-1"></i><span>Mutiler hedef: %0,10 → %0,40-0,75</span></li>
+        <li class="flex gap-2"><i class="ph ph-arrow-right accent-text mt-1"></i><span>DPP zorunluluğu mid-2028 projeksiyonu</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 5 MILESTONE ====== -->
+<section id="milestone" class="mb-20">
+  <div class="flex items-baseline justify-between mb-8">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-ink-500 mb-2 font-mono">01 / Kritik kilometre taşları</p>
+      <h2 class="font-display text-3xl">Beş milestone</h2>
+    </div>
+    <p class="text-sm text-ink-500 hidden md:block">Yol haritasının go/no-go kapıları</p>
+  </div>
+  
+  <div class="timeline-rail space-y-1">
+    
+    <div class="flex gap-6 py-5 border-b hairline">
+      <div class="w-12 h-12 rounded-full bg-white border-2 hairline flex items-center justify-center flex-shrink-0 relative z-10">
+        <i class="ph ph-certificate text-xl accent-text"></i>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-baseline justify-between flex-wrap gap-2 mb-1">
+          <p class="font-display text-lg">FSC CoC sertifika · IFCO Istanbul</p>
+          <p class="num text-sm text-ink-500">31 AĞU 2026</p>
+        </div>
+        <p class="text-sm text-ink-600">İlk sertifika elde. 19-21 Ağustos IFCO Istanbul fuar standı: 80+ kart, 5+ sıcak fırsat. Bütçe burada 50.000 TL yoğunlaşıyor.</p>
+      </div>
+    </div>
+    
+    <div class="flex gap-6 py-5 border-b hairline">
+      <div class="w-12 h-12 rounded-full bg-white border-2 hairline flex items-center justify-center flex-shrink-0 relative z-10">
+        <i class="ph ph-shield-check text-xl accent-text"></i>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-baseline justify-between flex-wrap gap-2 mb-1">
+          <p class="font-display text-lg">OEKO-TEX STANDARD 100</p>
+          <p class="num text-sm text-ink-500">31 EKİ 2026</p>
+        </div>
+        <p class="text-sm text-ink-600">İkinci sertifika. Kümülatif 4-6 müşteri kontratı. 8 n8n iş akışı canlı (lead enrichment, RFQ→PDF, vade hatırlatıcı dahil).</p>
+      </div>
+    </div>
+    
+    <div class="flex gap-6 py-5 border-b hairline">
+      <div class="w-12 h-12 rounded-full bg-white border-2 hairline flex items-center justify-center flex-shrink-0 relative z-10">
+        <i class="ph ph-recycle text-xl accent-text"></i>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-baseline justify-between flex-wrap gap-2 mb-1">
+          <p class="font-display text-lg">GRS sertifika · Texhibition Istanbul</p>
+          <p class="num text-sm text-ink-500">6 MAR 2027</p>
+        </div>
+        <p class="text-sm text-ink-600">Üçüncü sertifika 28 Şubat. 4-6 Mart Texhibition fuar standı "3-sertifikalı tek KOBİ" anlatısıyla. 100+ kart, kümülatif 16-20 müşteri, PR Dalga 1.</p>
+      </div>
+    </div>
+    
+    <div class="flex gap-6 py-5 border-b hairline">
+      <div class="w-12 h-12 rounded-full bg-white border-2 hairline flex items-center justify-center flex-shrink-0 relative z-10">
+        <i class="ph ph-qr-code text-xl accent-text"></i>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-baseline justify-between flex-wrap gap-2 mb-1">
+          <p class="font-display text-lg">DPP-ready hangtag genel sürüm</p>
+          <p class="num text-sm text-ink-500">TEM 2027</p>
+        </div>
+        <p class="text-sm text-ink-600">QR/NFC hazır hangtag pazarda. ESPR delegated act yayını için PR Dalga 2 hazır. Kümülatif 24-28 müşteri.</p>
+      </div>
+    </div>
+    
+    <div class="flex gap-6 py-5">
+      <div class="w-12 h-12 rounded-full accent-bg flex items-center justify-center flex-shrink-0 relative z-10">
+        <i class="ph ph-target text-xl text-white"></i>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-baseline justify-between flex-wrap gap-2 mb-1">
+          <p class="font-display text-lg">Yıl 2 hedef kapanış</p>
+          <p class="num text-sm text-ink-500">31 ARA 2027</p>
+        </div>
+        <p class="text-sm text-ink-600">Kümülatif 30-40 müşteri. Ciro koşu hızı ~110-120 milyon TL. 2028 planı onaylı, kapasite kararı verilmiş.</p>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ====== BÜTÇE GRAFİKLERİ ====== -->
+<section id="butce" class="mb-20">
+  <div class="flex items-baseline justify-between mb-8">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-ink-500 mb-2 font-mono">02 / Bütçe</p>
+      <h2 class="font-display text-3xl">500.000 TL nereye gidiyor</h2>
+    </div>
+  </div>
+  
+  <div class="grid md:grid-cols-2 gap-6 mb-8">
+    <div class="chart-box p-6">
+      <p class="text-sm text-ink-500 mb-4 font-mono">5 DALGA · BÜTÇENİN ZAMANA YAYILIMI</p>
+      <div id="chart-dalga" style="width:100%; height:280px;"></div>
+    </div>
+    <div class="chart-box p-6">
+      <p class="text-sm text-ink-500 mb-4 font-mono">KATEGORİ DAĞILIMI · %100</p>
+      <div id="chart-kategori" style="width:100%; height:280px;"></div>
+    </div>
+  </div>
+  
+  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+    <div class="bg-white border hairline p-3 rounded-sm">
+      <p class="text-xs text-ink-500 mb-1">Sertifikasyon</p>
+      <p class="num text-base">190K</p>
+      <p class="text-xs accent-text num">38%</p>
+    </div>
+    <div class="bg-white border hairline p-3 rounded-sm">
+      <p class="text-xs text-ink-500 mb-1">Dijital + n8n</p>
+      <p class="num text-base">80K</p>
+      <p class="text-xs accent-text num">16%</p>
+    </div>
+    <div class="bg-white border hairline p-3 rounded-sm">
+      <p class="text-xs text-ink-500 mb-1">Fuar + katalog</p>
+      <p class="num text-base">75K</p>
+      <p class="text-xs accent-text num">15%</p>
+    </div>
+    <div class="bg-white border hairline p-3 rounded-sm">
+      <p class="text-xs text-ink-500 mb-1">Outbound</p>
+      <p class="num text-base">60K</p>
+      <p class="text-xs accent-text num">12%</p>
+    </div>
+    <div class="bg-white border hairline p-3 rounded-sm">
+      <p class="text-xs text-ink-500 mb-1">DPP pilot</p>
+      <p class="num text-base">45K</p>
+      <p class="text-xs accent-text num">9%</p>
+    </div>
+    <div class="bg-white border hairline p-3 rounded-sm">
+      <p class="text-xs text-ink-500 mb-1">İçerik + SEO</p>
+      <p class="num text-base">30K</p>
+      <p class="text-xs accent-text num">6%</p>
+    </div>
+    <div class="bg-white border hairline p-3 rounded-sm">
+      <p class="text-xs text-ink-500 mb-1">Yedek</p>
+      <p class="num text-base">20K</p>
+      <p class="text-xs accent-text num">4%</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== TRAJEKTÖR ====== -->
+<section class="mb-20">
+  <div class="flex items-baseline justify-between mb-8">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-ink-500 mb-2 font-mono">03 / Trajektör</p>
+      <h2 class="font-display text-3xl">Kümülatif müşteri ve ciro</h2>
+    </div>
+  </div>
+  
+  <div class="chart-box p-6 mb-6">
+    <div id="chart-traj" style="width:100%; height:360px;"></div>
+  </div>
+  
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="chart-box p-6">
+      <p class="text-sm text-ink-500 mb-4 font-mono">5 SEGMENT · MÜŞTERİ HEDEFİ</p>
+      <div id="chart-segment" style="width:100%; height:280px;"></div>
+    </div>
+    <div class="chart-box p-6">
+      <p class="text-sm text-ink-500 mb-4 font-mono">SERTİFİKASYON SÜRESİ · İLK ÇIKTI</p>
+      <div id="chart-cert" style="width:100%; height:280px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 7 SPRINT ====== -->
+<section id="sprint" class="mb-20">
+  <div class="flex items-baseline justify-between mb-8">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-ink-500 mb-2 font-mono">04 / Sprintler</p>
+      <h2 class="font-display text-3xl">Yedi sprint · 90 günlük döngüler</h2>
+    </div>
+  </div>
+  
+  <div class="grid md:grid-cols-2 gap-4">
+    
+    <div class="sprint-card p-5 rounded-sm">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="sprint-num text-xs px-2 py-1 rounded-sm">S1</span>
+        <p class="num text-xs text-ink-500">MAY-TEM 2026</p>
+      </div>
+      <p class="font-display text-lg mb-2">Foundation</p>
+      <p class="text-sm text-ink-600 mb-3">Web Astro+Vue 3 dil canlı. CRM Prisma+PostgreSQL deploy. FSC danışman sözleşmesi imzalı. İlk 3 n8n workflow canlı. ICP 100 hedef şirket haritalandırılmış.</p>
+      <div class="flex flex-wrap gap-1.5">
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">Web v2</span>
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">CRM v1</span>
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">FSC kickoff</span>
+      </div>
+    </div>
+    
+    <div class="sprint-card p-5 rounded-sm">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="sprint-num text-xs px-2 py-1 rounded-sm">S2</span>
+        <p class="num text-xs text-ink-500">AĞU-EKİ 2026</p>
+      </div>
+      <p class="font-display text-lg mb-2">Sertifikasyon Wave 1 + İlk müşteriler</p>
+      <p class="text-sm text-ink-600 mb-3">FSC sertifika 31 Ağu elde. IFCO 19-21 Ağu standı + 80+ kart. OEKO-TEX 31 Eki elde. Kümülatif 4-6 müşteri kontrat. LinkedIn haftalık 100-150 connection request.</p>
+      <div class="flex flex-wrap gap-1.5">
+        <span class="text-xs px-2 py-0.5 accent-bg rounded-sm">FSC ✓</span>
+        <span class="text-xs px-2 py-0.5 accent-bg rounded-sm">OEKO-TEX ✓</span>
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">IFCO</span>
+      </div>
+    </div>
+    
+    <div class="sprint-card p-5 rounded-sm">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="sprint-num text-xs px-2 py-1 rounded-sm">S3</span>
+        <p class="num text-xs text-ink-500">KAS '26 - OCA '27</p>
+      </div>
+      <p class="font-display text-lg mb-2">Wave 2 + Ölçeklendirme</p>
+      <p class="text-sm text-ink-600 mb-3">GRS başvuru dosyası tamamlanmış. GRS denetim 31 Oca. Kümülatif 10-12 müşteri. WhatsApp katalog botu canlı, aylık 30+ RFQ. 12 n8n workflow tam.</p>
+      <div class="flex flex-wrap gap-1.5">
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">GRS başvuru</span>
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">WhatsApp bot</span>
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">12 workflow</span>
+      </div>
+    </div>
+    
+    <div class="sprint-card p-5 rounded-sm">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="sprint-num text-xs px-2 py-1 rounded-sm">S4</span>
+        <p class="num text-xs text-ink-500">ŞUB-NİS 2027</p>
+      </div>
+      <p class="font-display text-lg mb-2">Texhibition + DPP hazırlık</p>
+      <p class="text-sm text-ink-600 mb-3">GRS sertifika 28 Şub. Texhibition 4-6 Mart + 100+ kart. Kümülatif 16-20 müşteri. DPP pilot 2-3 müşteride beta. PR Dalga 1: 3 sektör yayını.</p>
+      <div class="flex flex-wrap gap-1.5">
+        <span class="text-xs px-2 py-0.5 accent-bg rounded-sm">GRS ✓</span>
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">Texhibition</span>
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">DPP beta</span>
+      </div>
+    </div>
+    
+    <div class="sprint-card p-5 rounded-sm">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="sprint-num text-xs px-2 py-1 rounded-sm">S5</span>
+        <p class="num text-xs text-ink-500">MAY-TEM 2027</p>
+      </div>
+      <p class="font-display text-lg mb-2">DPP pazara sürüm + Niş liderlik</p>
+      <p class="text-sm text-ink-600 mb-3">DPP genel sürüm 1 May. Kümülatif 22-28 müşteri. ESPR delegated act yayını PR Dalga 2. Aylık 50+ RFQ, dönüşüm %25+. 2 case study + 1 webinar.</p>
+      <div class="flex flex-wrap gap-1.5">
+        <span class="text-xs px-2 py-0.5 accent-bg rounded-sm">DPP launch</span>
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">PR Dalga 2</span>
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">Webinar</span>
+      </div>
+    </div>
+    
+    <div class="sprint-card p-5 rounded-sm">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="sprint-num text-xs px-2 py-1 rounded-sm">S6</span>
+        <p class="num text-xs text-ink-500">AĞU-EKİ 2027</p>
+      </div>
+      <p class="font-display text-lg mb-2">Ölçek konsolidasyonu</p>
+      <p class="text-sm text-ink-600 mb-3">Kümülatif 30-35 müşteri. 3 sertifika yıllık gözetim başarılı. Kapasite kararı go/no-go. 2. SDR aktif. 2028 plan taslağı.</p>
+      <div class="flex flex-wrap gap-1.5">
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">Gözetim</span>
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">SDR #2</span>
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">Kapasite</span>
+      </div>
+    </div>
+    
+    <div class="sprint-card p-5 rounded-sm md:col-span-2 border-2" style="border-color: var(--accent);">
+      <div class="flex items-center gap-3 mb-3">
+        <span class="text-xs px-2 py-1 accent-bg rounded-sm font-mono">S7 · FINAL</span>
+        <p class="num text-xs text-ink-500">KAS-ARA 2027</p>
+      </div>
+      <p class="font-display text-lg mb-2">Yıl kapanış + 2028 hazırlık</p>
+      <p class="text-sm text-ink-600 mb-3">Kümülatif 30-40 müşteri (hedef bandı). Ciro ~110-120M TL. Yılbaşı jest otomasyonu. 2028 plan onaylı. DPP global rakip kıyas tablosu (Avery Dennison atma.io, Trimco ProductDNA).</p>
+      <div class="flex flex-wrap gap-1.5">
+        <span class="text-xs px-2 py-0.5 accent-bg rounded-sm">Hedef ✓</span>
+        <span class="text-xs px-2 py-0.5 accent-bg rounded-sm">2028 onay</span>
+        <span class="text-xs px-2 py-0.5 bg-ink-100 rounded-sm">NPS ≥50</span>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- ====== 20 AY GRID ====== -->
+<section id="aylik" class="mb-20">
+  <div class="flex items-baseline justify-between mb-8">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-ink-500 mb-2 font-mono">05 / Aylık plan</p>
+      <h2 class="font-display text-3xl">Yirmi ay, yirmi tema</h2>
+    </div>
+  </div>
+  
+  <div id="ay-grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"></div>
+</section>
+
+<!-- ====== 12 n8n WORKFLOW ====== -->
+<section class="mb-20">
+  <div class="flex items-baseline justify-between mb-8">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-ink-500 mb-2 font-mono">06 / Otomasyon</p>
+      <h2 class="font-display text-3xl">12 n8n iş akışı</h2>
+    </div>
+    <div class="flex gap-4 text-xs text-ink-600">
+      <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm bg-ink-900"></span>Çekirdek</span>
+      <span class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm" style="background: var(--accent);"></span>Ölçek</span>
+    </div>
+  </div>
+  
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="n8n-grid"></div>
+</section>
+
+<!-- ====== İLK 7 GÜN ====== -->
+<section id="hafta" class="mb-20">
+  <div class="flex items-baseline justify-between mb-8">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-ink-500 mb-2 font-mono">07 / Başlangıç</p>
+      <h2 class="font-display text-3xl">İlk 7 gün</h2>
+      <p class="text-sm text-ink-500 mt-2">Salı 12 Mayıs 2026, saat 09:00</p>
+    </div>
+  </div>
+  
+  <div class="space-y-4" id="hafta-list"></div>
+</section>
+
+<!-- ====== 12 GO/NO-GO GATE ====== -->
+<section id="gate" class="mb-20">
+  <div class="flex items-baseline justify-between mb-8">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-ink-500 mb-2 font-mono">08 / Karar kapıları</p>
+      <h2 class="font-display text-3xl">12 go/no-go kapısı</h2>
+    </div>
+  </div>
+  
+  <div class="overflow-x-auto bg-white border hairline rounded-sm">
+    <table class="w-full text-sm">
+      <thead>
+        <tr class="border-b hairline">
+          <th class="text-left py-3 px-4 font-medium text-ink-500 text-xs uppercase tracking-wider font-mono w-16">Gate</th>
+          <th class="text-left py-3 px-4 font-medium text-ink-500 text-xs uppercase tracking-wider font-mono w-32">Tarih</th>
+          <th class="text-left py-3 px-4 font-medium text-ink-500 text-xs uppercase tracking-wider font-mono">Karar</th>
+          <th class="text-left py-3 px-4 font-medium text-ink-500 text-xs uppercase tracking-wider font-mono">Go kriteri</th>
+        </tr>
+      </thead>
+      <tbody id="gate-tbody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ====== RİSK MATRİSİ ====== -->
+<section class="mb-20">
+  <div class="flex items-baseline justify-between mb-8">
+    <div>
+      <p class="text-xs uppercase tracking-widest text-ink-500 mb-2 font-mono">09 / Risk yönetimi</p>
+      <h2 class="font-display text-3xl">Alternatif yollar</h2>
+    </div>
+  </div>
+  
+  <div class="grid md:grid-cols-2 gap-4">
+    <div class="bg-white border hairline p-5 rounded-sm">
+      <div class="flex items-center gap-2 mb-3">
+        <i class="ph ph-warning-octagon accent-text text-xl"></i>
+        <p class="font-display text-base">FSC gecikirse</p>
+      </div>
+      <p class="text-xs text-ink-500 mb-2 font-mono">TETİK: 30 EYL 2026 SERTİFİKA YOK</p>
+      <p class="text-sm text-ink-700">Mock audit major NC'leri 4 hafta kapat. IFCO leadlere "sertifika eli kulağında" mesaj. OEKO-TEX odaklı geçici anlatım. Sertifika kuruluşu değiştirme opsiyonu.</p>
+    </div>
+    
+    <div class="bg-white border hairline p-5 rounded-sm">
+      <div class="flex items-center gap-2 mb-3">
+        <i class="ph ph-user-minus accent-text text-xl"></i>
+        <p class="font-display text-base">İlk müşteri gelmezse</p>
+      </div>
+      <p class="text-xs text-ink-500 mb-2 font-mono">TETİK: 30 KAS 2026 KÜMÜLATİF &lt;3</p>
+      <p class="text-sm text-ink-700">Segment 3 (e-ticaret butik) ana hedef. SDR sayısı 2. Fiyat %10-15 indirim "tanıtım". Mevcut müşteri referansı. WhatsApp katalog Ay 7→Ay 6.</p>
+    </div>
+    
+    <div class="bg-white border hairline p-5 rounded-sm">
+      <div class="flex items-center gap-2 mb-3">
+        <i class="ph ph-currency-circle-dollar accent-text text-xl"></i>
+        <p class="font-display text-base">TL devalüasyonu</p>
+      </div>
+      <p class="text-xs text-ink-500 mb-2 font-mono">TETİK: TL/USD %15+ ANİ KAYMA</p>
+      <p class="text-sm text-ink-700">USD/EUR sertifika maliyetleri erken kilitle. Fuar ön ödeme. İhracat segmenti odak (ev tekstili). 1-yıl fiyat kilit kampanyası. Yedekten EUR pozisyon.</p>
+    </div>
+    
+    <div class="bg-white border hairline p-5 rounded-sm">
+      <div class="flex items-center gap-2 mb-3">
+        <i class="ph ph-arrows-out-cardinal accent-text text-xl"></i>
+        <p class="font-display text-base">Kapasiteyi geçen talep</p>
+      </div>
+      <p class="text-xs text-ink-500 mb-2 font-mono">TETİK: RFQ ≥100 + KAPASİTE ≥%90</p>
+      <p class="text-sm text-ink-700">Premium hat %20 prim. Lead time uzat. FSC zincirine freelance ortak (6-8 hafta gecikir). 2. tezgâh kararı. Küçük siparişleri WhatsApp katalog'a yönlendir.</p>
+    </div>
+    
+    <div class="bg-white border hairline p-5 rounded-sm">
+      <div class="flex items-center gap-2 mb-3">
+        <i class="ph ph-calendar-x accent-text text-xl"></i>
+        <p class="font-display text-base">ESPR gecikirse</p>
+      </div>
+      <p class="text-xs text-ink-500 mb-2 font-mono">TETİK: 31 TEM 2027 YAYIN YOK</p>
+      <p class="text-sm text-ink-700">"Battery DPP zorunlu, tekstil yakında" anlatımı. Toy Safety + Detergents DPP referansı. Yerli regülasyon takip. DPP'yi "rekabet avantajı" konumla.</p>
+    </div>
+    
+    <div class="bg-white border hairline p-5 rounded-sm">
+      <div class="flex items-center gap-2 mb-3">
+        <i class="ph ph-x-circle accent-text text-xl"></i>
+        <p class="font-display text-base">Major NC denetimde</p>
+      </div>
+      <p class="text-xs text-ink-500 mb-2 font-mono">TETİK: AY 17 YILLIK GÖZETIM 5+ NC</p>
+      <p class="text-sm text-ink-700">30 günlük corrective action. Diğer 2 sertifikaya devam. Müşterilere şeffaf bildirim. Danışman güçlendir veya değiştir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== KAPANIŞ ====== -->
+<section class="mb-12 pt-8 border-t hairline">
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="md:col-span-2">
+      <p class="text-xs uppercase tracking-widest text-ink-500 mb-3 font-mono">Sonuç</p>
+      <p class="font-display text-2xl mb-4">Eylem 12 Mayıs Salı 09:00'da başlar.</p>
+      <p class="text-base text-ink-700">Bu plan 6 ayda meyve vermez. 18-24. ayda ölçek görünür hâle gelir. Kurucu taahhüdü ve disiplinli sprint uygulaması, optimist senaryoda %0,75 pazar payına ve 220M TL ciroya götürebilir. Vibecoding avantajı, ajans maliyetinin sıfıra inmesini sağlar — bu sertifika ve fuar bütçesini ikiye katlamak demektir.</p>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-widest text-ink-500 mb-3 font-mono">Sonraki adım</p>
+      <ul class="space-y-2 text-sm">
+        <li class="flex gap-2"><i class="ph ph-check-circle accent-text"></i><span>Hetzner hesap aç</span></li>
+        <li class="flex gap-2"><i class="ph ph-check-circle accent-text"></i><span>FSC 5 danışman teklifi</span></li>
+        <li class="flex gap-2"><i class="ph ph-check-circle accent-text"></i><span>ICP 50 hedef şirket</span></li>
+        <li class="flex gap-2"><i class="ph ph-check-circle accent-text"></i><span>LinkedIn Sales Nav trial</span></li>
+        <li class="flex gap-2"><i class="ph ph-check-circle accent-text"></i><span>Web Astro+Vue iskelet</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t hairline pt-6 pb-12 text-xs text-ink-500 flex flex-wrap items-center justify-between gap-4">
+  <p class="font-mono">Mutiler · B2B etiket ve ambalaj · 2026-2027 yol haritası</p>
+  <p class="font-mono">500.000 ₺ · 20 ay · 3 sertifika · 30-40 müşteri</p>
+</footer>
+
+</main>
+
+<script>
+/* ============================================
+   DATA
+============================================ */
+
+const aylarData = [
+  { ay: 'May 2026', no: 1, tema: 'Foundation kickoff', butce: 35, detay: 'Hetzner + FSC danışman + ICP 50' },
+  { ay: 'Haz 2026', no: 2, tema: 'İnşaat', butce: 28, detay: 'Web + CRM + OEKO numune' },
+  { ay: 'Tem 2026', no: 3, tema: 'İçerik + fuar hazırlık', butce: 32, detay: 'IFCO kapora + 3 n8n' },
+  { ay: 'Ağu 2026', no: 4, tema: 'FSC sertifika + IFCO', butce: 50, detay: 'Stand canlı + sertifika', highlight: true },
+  { ay: 'Eyl 2026', no: 5, tema: 'IFCO follow-up', butce: 18, detay: 'OEKO-TEX denetim' },
+  { ay: 'Eki 2026', no: 6, tema: 'OEKO-TEX + ilk 4-6 müşteri', butce: 20, detay: 'İkinci sertifika', highlight: true },
+  { ay: 'Kas 2026', no: 7, tema: 'GRS + premium segment', butce: 22, detay: 'WhatsApp katalog bot' },
+  { ay: 'Ara 2026', no: 8, tema: 'Yıl sonu konsolidasyon', butce: 18, detay: 'Yılbaşı jest otomasyon' },
+  { ay: 'Oca 2027', no: 9, tema: 'GRS denetim', butce: 22, detay: '12 workflow tam' },
+  { ay: 'Şub 2027', no: 10, tema: 'GRS sertifika', butce: 25, detay: 'Texhibition prova', highlight: true },
+  { ay: 'Mar 2027', no: 11, tema: 'Texhibition + PR 1', butce: 32, detay: '3-sertifika lansman', highlight: true },
+  { ay: 'Nis 2027', no: 12, tema: 'DPP pilot başlatma', butce: 18, detay: '2-3 pilot müşteri' },
+  { ay: 'May 2027', no: 13, tema: 'DPP genel hazırlık', butce: 20, detay: 'Ev tekstili saha' },
+  { ay: 'Haz 2027', no: 14, tema: 'DPP lansman + webinar', butce: 25, detay: 'Spor/teknik segment', highlight: true },
+  { ay: 'Tem 2027', no: 15, tema: 'ESPR PR Dalga 2', butce: 18, detay: '5 sektör yayını' },
+  { ay: 'Ağu 2027', no: 16, tema: 'Yaz konsolidasyon', butce: 14, detay: 'İç sistem iyileştirme' },
+  { ay: 'Eyl 2027', no: 17, tema: 'Yıllık gözetim + SDR 2', butce: 22, detay: '3 sertifika yenilendi' },
+  { ay: 'Eki 2027', no: 18, tema: 'Kapasite kararı', butce: 16, detay: 'Go/no-go büyütme' },
+  { ay: 'Kas 2027', no: 19, tema: '2028 planlama', butce: 16, detay: 'SMART taslak' },
+  { ay: 'Ara 2027', no: 20, tema: 'Yıl kapanış', butce: 14, detay: 'NPS + 2028 onay', highlight: true }
+];
+
+const n8nData = [
+  { no: 1, ay: 'Tem 2026', isim: 'Lead enrichment', icon: 'ph-magnifying-glass', tier: 'cekirdek' },
+  { no: 2, ay: 'Tem 2026', isim: 'RFQ → teklif PDF', icon: 'ph-file-pdf', tier: 'cekirdek' },
+  { no: 3, ay: 'Tem 2026', isim: 'Numune kargo takip', icon: 'ph-package', tier: 'cekirdek' },
+  { no: 4, ay: 'Eyl 2026', isim: 'Fuar lead nurture', icon: 'ph-paper-plane-tilt', tier: 'cekirdek' },
+  { no: 5, ay: 'Eyl 2026', isim: 'Bayram jesti', icon: 'ph-gift', tier: 'cekirdek' },
+  { no: 6, ay: 'Eki 2026', isim: 'Numune → sipariş', icon: 'ph-arrow-bend-right-up', tier: 'cekirdek' },
+  { no: 7, ay: 'Eki 2026', isim: 'Vade hatırlatıcı', icon: 'ph-clock-countdown', tier: 'cekirdek' },
+  { no: 8, ay: 'Eki 2026', isim: 'Ödeme alert', icon: 'ph-bell-ringing', tier: 'cekirdek' },
+  { no: 9, ay: 'Kas 2026', isim: 'WhatsApp katalog botu', icon: 'ph-chat-circle-dots', tier: 'olcek' },
+  { no: 10, ay: 'Kas 2026', isim: 'Premium teklif şablonu', icon: 'ph-star', tier: 'olcek' },
+  { no: 11, ay: 'Ara 2026', isim: 'Yılbaşı hediye', icon: 'ph-gift', tier: 'olcek' },
+  { no: 12, ay: 'Oca 2027', isim: 'E-ticaret paket-deal', icon: 'ph-shopping-cart', tier: 'olcek' }
+];
+
+const haftaData = [
+  { gun: 'Salı 12 Mayıs', tema: 'Kickoff', detay: '09:00 plan sunum · 11:00 Hetzner CPX22 sipariş · 14:00 FSC 5 firma listesi · 16:30 LinkedIn Sales Nav trial', vurgu: true },
+  { gun: 'Çarşamba 13 Mayıs', tema: 'Outreach + ICP', detay: 'FSC 5 teklif e-postası · ICP doküman 50 hedef · Sales Nav ilk arama · katalog brief freelance' },
+  { gun: 'Perşembe 14 Mayıs', tema: 'Web başlangıç', detay: 'Astro 4 + Vue 3 iskelet · mutiler.com.tr audit · Hüseyin ile saha gezisi · FSC standardı özet' },
+  { gun: 'Cuma 15 Mayıs', tema: 'CRM şema', detay: 'Prisma şema v1 · PostgreSQL 16 Hetzner · Q3 içerik calendar · hafta 1 retro' },
+  { gun: 'Cumartesi-Pazar 16-17 Mayıs', tema: 'Opsiyonel okuma', detay: 'FSC standardı · ESPR Repass/Avelero analizleri · dinlenme' },
+  { gun: 'Pazartesi 18 Mayıs', tema: 'Hafta 2 başlangıç', detay: 'FSC 5 teklif tablo · 2 firmaya Zoom · web hero içerik · LinkedIn 20 connection request' }
+];
+
+const gateData = [
+  { kod: 'G1', tarih: '31 TEM 2026', karar: 'Web + CRM canlı', kriter: '3 dil web + 50+ CRM lead', yil: 1 },
+  { kod: 'G2', tarih: '15 EYL 2026', karar: 'FSC sertifika', kriter: 'Veritabanı kaydı', yil: 1 },
+  { kod: 'G3', tarih: '30 EYL 2026', karar: 'IFCO ROI', kriter: '≥5 sıcak fırsat', yil: 1 },
+  { kod: 'G4', tarih: '15 KAS 2026', karar: 'OEKO-TEX sertifika', kriter: 'Belge elde', yil: 1 },
+  { kod: 'G5', tarih: '30 KAS 2026', karar: 'İlk 6 müşteri', kriter: 'Kümülatif ≥6 imzalı', yil: 1 },
+  { kod: 'G6', tarih: '31 OCA 2027', karar: 'GRS denetim', kriter: 'Major NC yok', yil: 1 },
+  { kod: 'G7', tarih: '6 MAR 2027', karar: 'Texhibition + 3 sertifika', kriter: '100+ kart', yil: 2 },
+  { kod: 'G8', tarih: '30 NİS 2027', karar: 'Yıl 1 hedef', kriter: 'Kümülatif 12-15', yil: 2 },
+  { kod: 'G9', tarih: '31 MAY 2027', karar: 'DPP pilot', kriter: '2-3 müşteri canlı', yil: 2 },
+  { kod: 'G10', tarih: '31 TEM 2027', karar: 'ESPR PR', kriter: 'Delegated act yayını', yil: 2 },
+  { kod: 'G11', tarih: '30 EKİ 2027', karar: 'Kapasite kararı', kriter: '≥%85 → büyüt', yil: 2 },
+  { kod: 'G12', tarih: '31 ARA 2027', karar: 'Yıl 2 hedef', kriter: '30-40 müşteri · 2028 onay', yil: 2 }
+];
+
+/* ============================================
+   RENDER
+============================================ */
+
+const ayGrid = document.getElementById('ay-grid');
+ayGrid.innerHTML = aylarData.map(a => `
+  <div class="month-card bg-white/50 hairline border p-4 rounded-sm ${a.highlight ? 'shadow-sm' : ''}" style="${a.highlight ? 'border-left-color: var(--accent); background: white;' : 'border-left-color: var(--ink-line);'}">
+    <div class="flex items-baseline justify-between mb-2">
+      <p class="text-xs font-mono text-ink-500">${a.ay}</p>
+      <p class="text-xs font-mono text-ink-400">AY ${a.no}</p>
+    </div>
+    <p class="font-display text-base mb-1">${a.tema}</p>
+    <p class="text-xs text-ink-600 mb-3">${a.detay}</p>
+    <div class="flex items-baseline gap-1">
+      <span class="num text-sm ${a.highlight ? 'accent-text' : 'text-ink-700'}">${a.butce}K</span>
+      <span class="text-xs text-ink-500">₺</span>
+    </div>
+  </div>
+`).join('');
+
+const n8nGrid = document.getElementById('n8n-grid');
+n8nGrid.innerHTML = n8nData.map(w => {
+  const isCore = w.tier === 'cekirdek';
+  return `
+    <div class="bg-white border hairline p-3 rounded-sm" style="border-left: 3px solid ${isCore ? '#1c1917' : 'var(--accent)'};">
+      <div class="flex items-center gap-2 mb-2">
+        <i class="ph ${w.icon} text-base ${isCore ? 'text-ink-900' : 'accent-text'}"></i>
+        <span class="num text-xs text-ink-500">#${String(w.no).padStart(2, '0')}</span>
+      </div>
+      <p class="text-sm font-medium mb-1 leading-tight">${w.isim}</p>
+      <p class="text-xs text-ink-500 font-mono">${w.ay}</p>
+    </div>
+  `;
+}).join('');
+
+const haftaList = document.getElementById('hafta-list');
+haftaList.innerHTML = haftaData.map((h, i) => `
+  <div class="${h.vurgu ? 'bg-white' : 'bg-white/50'} border hairline rounded-sm p-4 flex gap-4">
+    <div class="flex-shrink-0">
+      <div class="w-10 h-10 ${h.vurgu ? 'accent-bg' : 'bg-ink-100'} rounded-sm flex items-center justify-center">
+        <span class="num text-sm ${h.vurgu ? 'text-white' : 'text-ink-700'}">${String(i + 1).padStart(2, '0')}</span>
+      </div>
+    </div>
+    <div class="flex-1">
+      <div class="flex items-baseline justify-between flex-wrap gap-2 mb-1">
+        <p class="font-display text-base">${h.tema}</p>
+        <p class="text-xs text-ink-500 font-mono">${h.gun}</p>
+      </div>
+      <p class="text-sm text-ink-600">${h.detay}</p>
+    </div>
+  </div>
+`).join('');
+
+const gateTbody = document.getElementById('gate-tbody');
+gateTbody.innerHTML = gateData.map(g => `
+  <tr class="border-b hairline last:border-b-0 hover:bg-ink-50">
+    <td class="py-3 px-4">
+      <span class="num text-xs font-medium px-2 py-1 rounded-sm ${g.yil === 1 ? 'bg-ink-100 text-ink-800' : 'accent-bg'}">${g.kod}</span>
+    </td>
+    <td class="py-3 px-4 num text-xs text-ink-600">${g.tarih}</td>
+    <td class="py-3 px-4 text-sm font-medium">${g.karar}</td>
+    <td class="py-3 px-4 text-sm text-ink-600">${g.kriter}</td>
+  </tr>
+`).join('');
+
+/* ============================================
+   ECHARTS
+============================================ */
+
+const echartTheme = {
+  textStyle: { fontFamily: 'Roboto, sans-serif', fontWeight: 300 },
+  color: ['#c2410c', '#1c1917', '#57534e', '#a8a29e', '#fb923c', '#292524', '#78716c']
+};
+
+const baseGrid = { left: 10, right: 20, top: 20, bottom: 30, containLabel: true };
+const baseAxis = {
+  axisLine: { lineStyle: { color: '#d6d3d1' } },
+  axisTick: { show: false },
+  axisLabel: { color: '#57534e', fontSize: 11, fontFamily: 'Roboto Mono, monospace' },
+  splitLine: { lineStyle: { color: '#f5f5f4', type: 'solid' } }
+};
+
+// CHART 1: 5 Dalga
+const chartDalga = echarts.init(document.getElementById('chart-dalga'));
+chartDalga.setOption({
+  grid: baseGrid,
+  xAxis: {
+    type: 'category',
+    data: ['W1\nMay-Tem', 'W2\nAğu-Eki', 'W3\nKas-Oca', 'W4\nŞub-Nis', 'W5\nMay-Ara'],
+    ...baseAxis,
+    axisLabel: { ...baseAxis.axisLabel, lineHeight: 14 }
+  },
+  yAxis: {
+    type: 'value',
+    ...baseAxis,
+    axisLabel: { ...baseAxis.axisLabel, formatter: (v) => (v / 1000) + 'K' }
+  },
+  tooltip: {
+    trigger: 'axis',
+    formatter: (params) => `<div style="font-family: Roboto Mono, monospace; font-size: 12px;">${params[0].name.replace('\n', ' ')}<br><strong>${params[0].value.toLocaleString('tr-TR')} ₺</strong></div>`,
+    backgroundColor: '#1c1917',
+    borderColor: '#1c1917',
+    textStyle: { color: '#fff', fontSize: 12 }
+  },
+  series: [{
+    data: [
+      { value: 95000, itemStyle: { color: '#78716c' } },
+      { value: 110000, itemStyle: { color: '#c2410c' } },
+      { value: 70000, itemStyle: { color: '#a8a29e' } },
+      { value: 95000, itemStyle: { color: '#fb923c' } },
+      { value: 130000, itemStyle: { color: '#1c1917' } }
+    ],
+    type: 'bar',
+    barWidth: '50%',
+    label: {
+      show: true,
+      position: 'top',
+      formatter: (p) => (p.value / 1000) + 'K',
+      color: '#1c1917',
+      fontSize: 11,
+      fontFamily: 'Roboto Mono, monospace'
+    }
+  }]
+});
+
+// CHART 2: Kategori Doughnut
+const chartKategori = echarts.init(document.getElementById('chart-kategori'));
+chartKategori.setOption({
+  tooltip: {
+    trigger: 'item',
+    formatter: (p) => `<div style="font-family: Roboto Mono, monospace; font-size: 12px;">${p.name}<br><strong>${p.value.toLocaleString('tr-TR')} ₺ (${p.percent}%)</strong></div>`,
+    backgroundColor: '#1c1917',
+    borderColor: '#1c1917',
+    textStyle: { color: '#fff', fontSize: 12 }
+  },
+  legend: {
+    type: 'scroll',
+    bottom: 0,
+    textStyle: { fontSize: 11, color: '#57534e', fontFamily: 'Roboto, sans-serif' },
+    itemWidth: 10,
+    itemHeight: 10
+  },
+  series: [{
+    type: 'pie',
+    radius: ['45%', '70%'],
+    center: ['50%', '42%'],
+    avoidLabelOverlap: true,
+    itemStyle: { borderColor: '#fff', borderWidth: 2 },
+    label: { show: false },
+    data: [
+      { value: 190000, name: 'Sertifikasyon', itemStyle: { color: '#c2410c' } },
+      { value: 80000, name: 'Dijital + n8n', itemStyle: { color: '#1c1917' } },
+      { value: 75000, name: 'Fuar + katalog', itemStyle: { color: '#fb923c' } },
+      { value: 60000, name: 'Outbound', itemStyle: { color: '#57534e' } },
+      { value: 45000, name: 'DPP pilot', itemStyle: { color: '#9a3412' } },
+      { value: 30000, name: 'İçerik + SEO', itemStyle: { color: '#a8a29e' } },
+      { value: 20000, name: 'Yedek', itemStyle: { color: '#d6d3d1' } }
+    ]
+  }]
+});
+
+// CHART 3: Trajektör
+const chartTraj = echarts.init(document.getElementById('chart-traj'));
+chartTraj.setOption({
+  grid: { left: 10, right: 50, top: 40, bottom: 60, containLabel: true },
+  legend: {
+    bottom: 10,
+    textStyle: { fontSize: 12, color: '#57534e' },
+    itemWidth: 18,
+    itemHeight: 2
+  },
+  tooltip: {
+    trigger: 'axis',
+    backgroundColor: '#1c1917',
+    borderColor: '#1c1917',
+    textStyle: { color: '#fff', fontSize: 12 }
+  },
+  xAxis: {
+    type: 'category',
+    data: ['S0 Baz', 'S1 Tem-26', 'S2 Eki-26', 'S3 Oca-27', 'S4 Nis-27', 'S5 Tem-27', 'S6 Eki-27', 'S7 Ara-27'],
+    ...baseAxis,
+    boundaryGap: false
+  },
+  yAxis: [
+    {
+      type: 'value',
+      name: 'Müşteri',
+      nameLocation: 'middle',
+      nameGap: 40,
+      nameTextStyle: { color: '#57534e', fontSize: 11 },
+      ...baseAxis
+    },
+    {
+      type: 'value',
+      name: 'M ₺',
+      nameLocation: 'middle',
+      nameGap: 30,
+      nameTextStyle: { color: '#57534e', fontSize: 11 },
+      min: 50,
+      max: 130,
+      ...baseAxis,
+      splitLine: { show: false }
+    }
+  ],
+  series: [
+    {
+      name: 'Kümülatif müşteri',
+      type: 'line',
+      data: [0, 2, 6, 11, 18, 25, 32, 37],
+      smooth: true,
+      symbol: 'circle',
+      symbolSize: 8,
+      lineStyle: { width: 2, color: '#c2410c' },
+      itemStyle: { color: '#c2410c' },
+      areaStyle: { color: 'rgba(194, 65, 12, 0.08)' },
+      yAxisIndex: 0
+    },
+    {
+      name: 'Aylık ciro (M ₺)',
+      type: 'line',
+      data: [55, 58, 65, 75, 85, 100, 110, 120],
+      smooth: true,
+      symbol: 'diamond',
+      symbolSize: 8,
+      lineStyle: { width: 2, color: '#1c1917', type: 'dashed' },
+      itemStyle: { color: '#1c1917' },
+      yAxisIndex: 1
+    }
+  ]
+});
+
+// CHART 4: Segment
+const chartSegment = echarts.init(document.getElementById('chart-segment'));
+chartSegment.setOption({
+  grid: { left: 10, right: 30, top: 10, bottom: 20, containLabel: true },
+  tooltip: {
+    trigger: 'item',
+    backgroundColor: '#1c1917',
+    borderColor: '#1c1917',
+    textStyle: { color: '#fff', fontSize: 12 }
+  },
+  xAxis: {
+    type: 'value',
+    ...baseAxis
+  },
+  yAxis: {
+    type: 'category',
+    data: ['Spor + teknik', 'Premium yerli', 'Ev tekstili', 'LCW/Koton 2. seviye', 'E-ticaret butik'],
+    ...baseAxis,
+    axisLabel: { ...baseAxis.axisLabel, fontSize: 11 }
+  },
+  series: [{
+    type: 'bar',
+    data: [
+      { value: 2, itemStyle: { color: '#a8a29e' } },
+      { value: 4, itemStyle: { color: '#78716c' } },
+      { value: 5, itemStyle: { color: '#57534e' } },
+      { value: 12, itemStyle: { color: '#9a3412' } },
+      { value: 30, itemStyle: { color: '#c2410c' } }
+    ],
+    barWidth: '60%',
+    label: {
+      show: true,
+      position: 'right',
+      formatter: '{c}',
+      color: '#1c1917',
+      fontSize: 12,
+      fontFamily: 'Roboto Mono, monospace',
+      fontWeight: 500
+    }
+  }]
+});
+
+// CHART 5: Sertifika Süresi
+const chartCert = echarts.init(document.getElementById('chart-cert'));
+chartCert.setOption({
+  grid: { left: 10, right: 30, top: 10, bottom: 20, containLabel: true },
+  tooltip: {
+    trigger: 'item',
+    formatter: (p) => `<div style="font-family: Roboto Mono, monospace; font-size: 12px;">${p.name}<br><strong>${p.value[1] - p.value[0]} hafta</strong></div>`,
+    backgroundColor: '#1c1917',
+    borderColor: '#1c1917',
+    textStyle: { color: '#fff', fontSize: 12 }
+  },
+  xAxis: {
+    type: 'value',
+    name: 'Hafta',
+    nameLocation: 'middle',
+    nameGap: 25,
+    nameTextStyle: { color: '#57534e', fontSize: 11 },
+    ...baseAxis,
+    min: 0,
+    max: 90
+  },
+  yAxis: {
+    type: 'category',
+    data: ['GRS', 'OEKO-TEX', 'FSC CoC'],
+    ...baseAxis,
+    axisLabel: { ...baseAxis.axisLabel, fontSize: 12, fontWeight: 500 }
+  },
+  series: [
+    {
+      name: 'Başlangıç',
+      type: 'bar',
+      stack: 'cert',
+      itemStyle: { color: 'transparent' },
+      data: [40, 14, 0]
+    },
+    {
+      name: 'Süreç',
+      type: 'bar',
+      stack: 'cert',
+      barWidth: '50%',
+      data: [
+        { value: 35, itemStyle: { color: '#fb923c' } },
+        { value: 26, itemStyle: { color: '#c2410c' } },
+        { value: 14, itemStyle: { color: '#1c1917' } }
+      ],
+      label: {
+        show: true,
+        position: 'right',
+        formatter: (p) => p.value + ' hf',
+        color: '#1c1917',
+        fontSize: 11,
+        fontFamily: 'Roboto Mono, monospace'
+      }
+    }
+  ]
+});
+
+// Resize observer
+window.addEventListener('resize', () => {
+  chartDalga.resize();
+  chartKategori.resize();
+  chartTraj.resize();
+  chartSegment.resize();
+  chartCert.resize();
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+
+</body>
+</html>
