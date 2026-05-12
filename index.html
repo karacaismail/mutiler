@@ -14,7 +14,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.2/flowbite.min.js"></script>
 <script src="https://unpkg.com/@phosphor-icons/web"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.1/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"
+        onerror="this.onerror=null;this.src='https://unpkg.com/echarts@5.5.1/dist/echarts.min.js';"></script>
 
 <script>
 tailwind.config = {
@@ -783,6 +784,15 @@ gateTbody.innerHTML = gateData.map(g => `
    ECHARTS
 ============================================ */
 
+function initCharts() {
+  if (typeof echarts === 'undefined') {
+    console.error('[Mutiler] ECharts yüklenmedi. CDN erişimini kontrol edin.');
+    document.querySelectorAll('.chart-box > div[id^="chart-"]').forEach(el => {
+      el.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#a8a29e;font-family:Roboto Mono,monospace;font-size:0.875rem;">Grafik yüklenemedi · CDN erişilemez</div>';
+    });
+    return;
+  }
+
 const echartTheme = {
   textStyle: { fontFamily: 'Roboto, sans-serif', fontWeight: 300 },
   color: ['#c2410c', '#1c1917', '#57534e', '#a8a29e', '#fb923c', '#292524', '#78716c']
@@ -1052,6 +1062,14 @@ window.addEventListener('resize', () => {
   chartSegment.resize();
   chartCert.resize();
 });
+
+} // initCharts() sonu
+
+if (document.readyState === 'complete') {
+  initCharts();
+} else {
+  window.addEventListener('load', initCharts);
+}
 
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
